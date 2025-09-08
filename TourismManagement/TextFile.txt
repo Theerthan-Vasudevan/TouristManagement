@@ -1,0 +1,74 @@
+﻿TourismManagementSystem/
+│
+├── Controllers/                 # Handles requests & connects Models with Views
+│   ├── HomeController.cs
+│   ├── AccountController.cs     # Login, Register
+│   ├── BookingController.cs
+│   ├── PackageController.cs
+│   ├── AdminController.cs
+│   └── ReportController.cs
+│
+├── Models/                      # Entity classes + Business logic
+│   ├── User.cs
+│   ├── Package.cs
+│   ├── Booking.cs
+│   ├── Payment.cs
+│   ├── Admin.cs
+│   └── Report.cs
+│
+├── Views/                       # UI Pages (Razor Views)
+│   ├── Shared/                  # Layout, partial views
+│   │   └── _Layout.cshtml
+│   │
+│   ├── Home/
+│   │   └── Index.cshtml
+│   │   └── About.cshtml
+│   │
+│   ├── Account/
+│   │   └── Login.cshtml
+│   │   └── Register.cshtml
+│   │   └── Profile.cshtml
+│   │
+│   ├── Package/
+│   │   └── List.cshtml
+│   │   └── Details.cshtml
+│   │
+│   ├── Booking/
+│   │   └── Create.cshtml
+│   │   └── Manage.cshtml
+│   │   └── History.cshtml
+│   │
+│   ├── Admin/
+│   │   └── Dashboard.cshtml
+│   │   └── ManagePackages.cshtml
+│   │   └── ManageBookings.cshtml
+│   │   └── Reports.cshtml
+│
+├── DAL/                         # Data Access Layer
+│   ├── TourismDbContext.cs      # Entity Framework DbContext
+│   ├── IRepository.cs           # Generic repo interface
+│   ├── PackageRepository.cs
+│   ├── BookingRepository.cs
+│   └── UserRepository.cs
+│
+├── Services/                    # Business services
+│   ├── BookingService.cs
+│   ├── PaymentService.cs
+│   ├── PackageService.cs
+│   └── ReportService.cs
+│
+├── Scripts/                     # JavaScript, jQuery, AJAX
+│
+├── Content/                     # CSS, images, static files
+│   ├── css/
+│   ├── images/
+│   └── bootstrap.css
+│
+├── App_Start/                   # Config files
+│   ├── RouteConfig.cs
+│   ├── FilterConfig.cs
+│   ├── BundleConfig.cs
+│
+├── Web.config                   # Project configuration
+├── Global.asax                  # Application start
+└── TourismManagementSystem.sln  # Solution file
