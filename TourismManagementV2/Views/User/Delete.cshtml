@@ -12,6 +12,9 @@
             <p>Are you sure you want to delete your account, <strong>@Model.Username</strong>? This action cannot be undone.</p>
 
             <form asp-action="DeleteProfile" method="post">
+                <!-- hidden field to send UserId -->
+                <input type="hidden" asp-for="Id" />
+
                 <button type="submit" class="btn btn-danger">Yes, Delete</button>
                 <a asp-action="Profile" class="btn btn-secondary">Cancel</a>
             </form>

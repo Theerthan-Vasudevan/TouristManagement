@@ -127,15 +127,15 @@ namespace TourismManagementV2.Controllers
         // POST: User/DeleteProfile
         [HttpPost, ActionName("DeleteProfile")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteProfileConfirmed()
+        public IActionResult DeleteProfileConfirmed(int id)
         {
             var userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
                 return RedirectToAction("Login", "Home");
 
-            _userRepo.deleteUser(userId.Value);
-            HttpContext.Session.Clear(); // log out after deletion
-            return RedirectToAction("Index", "Home");
+            _userRepo.deleteUser(id);
+            //HttpContext.Session.Clear(); // log out after deletion
+            return RedirectToAction("AdminIndex", "User");
         }
 
         // GET: User/UserIndex (for general list of users)
