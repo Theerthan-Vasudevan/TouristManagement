@@ -6,10 +6,12 @@ namespace TourismManagement.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public IActionResult Index()
         {
+            // Redirect directly to the Login page
             return View();
         }
+
 
         public ActionResult About()
         {
@@ -20,5 +22,10 @@ namespace TourismManagement.Controllers
         {
             return View();
         }
+        public ActionResult GetStarted()
+        {
+            return View();
+        }
+
     }
 }

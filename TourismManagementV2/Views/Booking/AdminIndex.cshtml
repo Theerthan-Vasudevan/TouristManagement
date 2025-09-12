@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TourismManagementV2.Models.Booking>
+
+<h2>All Bookings (Admin)</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>User ID</th>
+            <th>Package ID</th>
+            <th>Status</th>
+            <th>Booking Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model)
+        {
+            <tr>
+                <td>@b.BookingId</td>
+                <td>@b.UserId</td>
+                <td>@b.PackageId</td>
+                <td>@b.Status</td>
+                <td>@b.BookingDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@b.BookingId" class="btn btn-info btn-sm">Details</a>
+                    <a asp-action="Edit" asp-route-id="@b.BookingId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@b.BookingId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

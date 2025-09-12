@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using TourismManagement.DAL;
 using TourismManagement.DAL.Interface;
 using TourismManagement.DAL.Repository;
+using TourismManagement.Service;
 
 namespace TourismManagement
 {
@@ -31,6 +32,9 @@ namespace TourismManagement
             builder.Services.AddScoped<IPackageRepository, PackageRepository>();
             builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+            builder.Services.AddScoped<UserService>();
+
 
             var app = builder.Build();
 

@@ -1,0 +1,62 @@
+﻿@model TourismManagementV2.Models.Booking
+
+@{
+    ViewData["Title"] = "Payment";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-dark text-white text-center">
+                    <h3 class="mb-0">Payment</h3>
+                </div>
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3">Booking Summary</h5>
+                    <ul class="list-group mb-4">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><strong>Package Name</strong></span>
+                            <span>@Model.Package?.PackageName</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><strong>Price per Person</strong></span>
+                            <span>₹@Model.Package?.Price</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><strong>Number of People</strong></span>
+                            <span>@Model.NumberOfPeople</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><strong>Total Amount</strong></span>
+                            <span class="fw-bold text-success">₹@(Model.TotalAmount)</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><strong>Status</strong></span>
+                            <span>@Model.Status</span>
+                        </li>
+                    </ul>
+
+                    <h5 class="fw-bold mb-3">Payment Options</h5>
+                    <form asp-action="ConfirmPayment" method="post">
+                        <input type="hidden" asp-for="BookingId" />
+                        <div class="mb-3">
+                            <label for="PaymentMethod" class="form-label">Select Payment Method</label>
+                            <select id="PaymentMethod" name="PaymentMethod" class="form-select">
+                                <option value="Credit Card">Credit Card</option>
+                                <option value="Debit Card">Debit Card</option>
+                                <option value="UPI">UPI</option>
+                                <option value="Net Banking">Net Banking</option>
+                            </select>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-dark px-5 py-2">
+                                Pay Now
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

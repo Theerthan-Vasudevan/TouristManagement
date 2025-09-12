@@ -52,12 +52,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xIaXN0b3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/P12C4F6/source/repos/AllProjects/TourismManagement/TourismManagement/Views/Booking/Manage.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xNYW5hZ2UuY3NodG1s
+[C:/Users/P12C4F6/source/repos/AllProjects/TourismManagement/TourismManagement/Views/Booking/MyBookings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xNeUJvb2tpbmdzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/P12C4F6/source/repos/AllProjects/TourismManagement/TourismManagement/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/P12C4F6/source/repos/AllProjects/TourismManagement/TourismManagement/Views/Home/GetStarted.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHZXRTdGFydGVkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/P12C4F6/source/repos/AllProjects/TourismManagement/TourismManagement/Views/Home/Index.cshtml]

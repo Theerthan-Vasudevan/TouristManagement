@@ -12,7 +12,7 @@ using TourismManagement.DAL;
 namespace TourismManagement.Migrations
 {
     [DbContext(typeof(TourismDBContext))]
-    [Migration("20250908072011_InitialCreate")]
+    [Migration("20250909090441_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

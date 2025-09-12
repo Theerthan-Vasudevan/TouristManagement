@@ -144,3 +144,4 @@ C:\Users\P12C4F6\source\repos\AllProjects\TourismManagement\TourismManagement\bi
 C:\Users\P12C4F6\source\repos\AllProjects\TourismManagement\TourismManagement\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\P12C4F6\source\repos\AllProjects\TourismManagement\TourismManagement\obj\Debug\net8.0\TourismManagement.csproj.AssemblyReference.cache
 C:\Users\P12C4F6\source\repos\AllProjects\TourismManagement\TourismManagement\obj\Debug\net8.0\TourismM.318B26E4.Up2Date
+C:\Users\P12C4F6\source\repos\AllProjects\TourismManagement\TourismManagement\obj\Debug\net8.0\TourismManagement.sourcelink.json

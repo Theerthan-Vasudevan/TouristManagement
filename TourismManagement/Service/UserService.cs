@@ -24,9 +24,11 @@ namespace TourismManagement.Service
 
         public void RegisterUser(User user)
         {
-            // Business rule: default role = Customer
             user.Role = "Customer";
-            user.PasswordHash = HashPassword(user.PasswordHash); // hashing
+            //if (string.IsNullOrWhiteSpace(user.Password))
+            //    throw new Exception("Password is required.");
+
+            //user.PasswordHash = HashPassword(user.Password);
             userRepo.Add(user);
             userRepo.Save();
         }
@@ -39,10 +41,17 @@ namespace TourismManagement.Service
             return user;
         }
 
-        private string HashPassword(string password)
+        public string HashPassword(string password)
         {
-            // ⚠️ For demo only: use a secure hashing algorithm in real apps
-            return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(password));
+            if (string.IsNullOrEmpty(password))
+                return null;
+
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                var bytes = System.Text.Encoding.UTF8.GetBytes(password);
+                var hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
+            }
         }
 
         private bool VerifyPassword(string password, string hash)

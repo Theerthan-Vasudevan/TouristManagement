@@ -1,0 +1,30 @@
+﻿@model TourismManagementV2.Models.Booking
+
+@{
+    ViewData["Title"] = "Book Package";
+}
+
+<h2>Book Package</h2>
+
+<div class="card p-3">
+    <h4>Package Details</h4>
+    <p><strong>Package ID:</strong> @Model.PackageId</p>
+    @if (Model.Package != null)
+    {
+        <p><strong>Name:</strong> @Model.Package.PackageName</p>
+        <p><strong>Price per person:</strong> ₹@Model.Package.Price</p>
+        <p><strong>Duration:</strong> @Model.Package.DurationDays days</p>
+    }
+
+    <form asp-action="Book" method="post">
+        <input type="hidden" asp-for="PackageId" />
+
+        <div class="form-group mb-2">
+            <label asp-for="NumberOfPeople" class="form-label"></label>
+            <input asp-for="NumberOfPeople" class="form-control" min="1" required />
+            <span asp-validation-for="NumberOfPeople" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Proceed to Payment</button>
+    </form>
+</div>

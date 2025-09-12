@@ -10,6 +10,7 @@ namespace TourismManagement.Controllers
 
         public AccountController(UserService userService)
         {
+            if (userService == null) throw new Exception("UserService not injected!");
             this.userService = userService;
         }
 
@@ -21,14 +22,24 @@ namespace TourismManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(User user)
+        public ActionResult Register(RegistrationViewModel model)
         {
             if (ModelState.IsValid)
             {
+                var user = new User
+                {
+                    FullName = model.FullName,
+                    Email = model.Email,
+                    Username = model.Username,
+                    PasswordHash = userService.HashPassword(model.Password),
+                    PhoneNumber = model.PhoneNumber,
+                    Role = "Customer"
+                };
+
                 userService.RegisterUser(user);
                 return RedirectToAction("Login");
             }
-            return View(user);
+            return View(model);
         }
 
         // Login

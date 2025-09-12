@@ -1,0 +1,33 @@
+﻿@model TourismManagementV2.Models.User
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="mb-4 text-center">My Profile</h2>
+
+    <div class="mb-2 d-flex">
+        <div class="fw-bold" style="width: 100px;">Username:</div>
+        <div>@Model.Username</div>
+    </div>
+
+    <div class="mb-2 d-flex">
+        <div class="fw-bold" style="width: 100px;">Email:</div>
+        <div>@Model.Email</div>
+    </div>
+
+    <div class="mb-2 d-flex">
+        <div class="fw-bold" style="width: 100px;">Phone:</div>
+        <div>@Model.Phone</div>
+    </div>
+
+
+    <div class="d-flex justify-content-start mt-4">
+        <a asp-action="EditProfile" class="btn btn-outline-primary me-2">Edit Profile</a>
+
+        <form asp-action="DeleteProfile" method="post" onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
+            <button type="submit" class="btn btn-outline-danger">Delete Account</button>
+        </form>
+    </div>
+</div>

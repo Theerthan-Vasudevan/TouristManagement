@@ -1,0 +1,47 @@
+﻿@model TourismManagementV2.Models.Booking
+
+@{
+    ViewData["Title"] = "Book Package";
+}
+
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">Book Your Package</h2>
+        <p class="text-muted">Please fill in the details below to continue</p>
+    </div>
+
+    <div class="mx-auto" style="max-width: 700px;">
+        <form asp-action="Book" method="post" class="p-4 border rounded shadow-sm bg-white">
+            <input type="hidden" asp-for="PackageId" />
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Package Name</label>
+                    <input type="text" class="form-control" value="@Model.Package.PackageName" disabled />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Price per Person</label>
+                    <input type="text" class="form-control" value="₹@Model.Package.Price" disabled />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NumberOfPeople" class="form-label"></label>
+                <input asp-for="NumberOfPeople" class="form-control" type="number" min="1" required />
+                <span asp-validation-for="NumberOfPeople" class="text-danger"></span>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-dark px-5 py-2">
+                    Proceed to Payment
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

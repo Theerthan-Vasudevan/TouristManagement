@@ -1,0 +1,41 @@
+﻿@model IEnumerable<TourismManagementV2.Models.Booking>
+
+@{
+    ViewData["Title"] = "Cancelled Bookings";
+}
+
+<h2 class="mb-4">Cancelled Bookings</h2>
+
+<table class="table table-bordered table-striped table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Booking Id</th>
+            <th>User</th>
+            <th>Package</th>
+            <th>Date</th>
+            <th>People</th>
+            <th>Total Amount</th>
+            <th>Refund Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BookingId</td>
+                <td>@item.User?.Username</td>
+                <td>@item.Package?.PackageName</td>
+                <td>@item.BookingDate.ToShortDateString()</td>
+                <td>@item.NumberOfPeople</td>
+                <td>₹@item.TotalAmount</td>
+                <td>₹@(item.TotalAmount * 0.85)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="mt-3">
+    <a asp-controller="Package" asp-action="AdminIndex" class="btn btn-primary">
+        Back to Packages
+    </a>
+</div>

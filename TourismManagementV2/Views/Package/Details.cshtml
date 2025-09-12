@@ -1,0 +1,30 @@
+﻿@model TourismManagementV2.Models.Package
+@{
+    ViewData["Title"] = "Package Details";
+}
+
+<h2>@Model.PackageName</h2>
+
+<p>@Model.Description</p>
+<p>Price: @Model.Price</p>
+<p>Duration: @Model.DurationDays days</p>
+
+@if (Model.Bookings != null && Model.Bookings.Any())
+{
+    <h4>Bookings:</h4>
+    <ul>
+        @foreach (var booking in Model.Bookings)
+        {
+            <li>User ID: @booking.UserId, Status: @booking.Status</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No bookings yet.</p>
+}
+
+<p>
+    <a asp-action="AdminIndex" class="btn btn-secondary">Back to Admin</a>
+    <a asp-action="UserIndex" class="btn btn-secondary">Back to User</a>
+</p>

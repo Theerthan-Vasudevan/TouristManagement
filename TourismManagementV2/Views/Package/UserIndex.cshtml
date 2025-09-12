@@ -1,0 +1,87 @@
+﻿@using System.Linq
+@model IEnumerable<TourismManagementV2.Models.Package>
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">✨ Explore Our Packages ✨</h2>
+
+    <!-- Search Bar -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <form asp-action="UserIndex" method="get" class="input-group">
+                <input type="text" name="searchString"
+                       class="form-control"
+                       placeholder="Search packages..."
+                       value="@Context.Request.Query["searchString"]" />
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Package Cards -->
+    @if (Model != null && Model.Any())
+    {
+        <div class="row mt-4">
+            @foreach (var package in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm border-0 package-card">
+                        <!-- Correct image path -->
+                        <img src="@package.ImageUrl" class="card-img-top" alt="@package.PackageName">
+
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">@package.PackageName</h5>
+                            <p class="card-text text-muted">
+                                @(package.Description.Length > 100
+                                                        ? package.Description.Substring(0, 100) + "..."
+                                                        : package.Description)
+                    </p>
+                    <p class="mb-2">
+                        <strong>₹@String.Format("{0:N0}", package.Price)</strong>
+                        | @package.DurationDays days
+                    </p>
+
+                            <!-- Book Now button -->
+                            <a asp-controller="Booking" asp-action="Book" asp-route-id="@package.PackageId"
+                               class="btn btn-success w-100">
+                                Book Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                }
+        </div>
+    }
+    else
+    {
+        <div class="text-center mt-5">
+            <div class="alert alert-warning d-inline-block shadow-sm p-4">
+                <h5>😔 Sorry!</h5>
+                <p>No packages found matching your search.</p>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .package-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        border-radius: 10px;
+    }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.15);
+        }
+
+    .card-title {
+        color: #333;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+    }
+
+    .btn-success {
+        font-weight: bold;
+    }
+</style>

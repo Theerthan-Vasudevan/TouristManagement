@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TourismManagementV2.Models.Package>
+
+@{
+    ViewData["Title"] = "Manage Packages";
+}
+
+<h2 class="mb-4">Manage Packages</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success mb-3">Add New Package</a>
+</p>
+
+<table class="table table-bordered table-striped table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.PackageName)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.DurationDays)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PackageName</td>
+                <td>@item.Description</td>
+                <td>₹@item.Price</td>
+                <td>@item.DurationDays days</td>
+                <td>
+                    <div class="d-flex flex-wrap gap-2">
+                        <a asp-controller="Booking" asp-action="PackageBookings" asp-route-packageId="@item.PackageId" class="btn btn-info btn-sm flex-grow-1">
+                            Manage Bookings
+                        </a>
+                        <a asp-action="Edit" asp-route-id="@item.PackageId" class="btn btn-warning btn-sm flex-grow-1">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.PackageId" class="btn btn-danger btn-sm flex-grow-1">Delete</a>
+                        <a asp-controller="Booking" asp-action="CancelledBookings" class="btn btn-secondary btn-sm flex-grow-1">
+                            Cancelled Bookings
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
