@@ -1,8 +1,25 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model TourismManagement.Models.Booking
+
+@{
+    ViewBag.Title = "Create Booking";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h2>Create Booking</h2>
+
+<div class="card p-3">
+    <h4>Package: @ViewBag.PackageName</h4>
+    <p>Price per person: <strong>@ViewBag.PackagePrice</strong></p>
 </div>
+
+@using (Html.BeginForm("Create", "Booking", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.PackageId)
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.NumberOfPeople)
+        @Html.TextBoxFor(m => m.NumberOfPeople, new { @class = "form-control", type = "number", min = "1", value = "1" })
+    </div>
+
+    <button type="submit" class="btn btn-success mt-2">Confirm Booking</button>
+    <a href="@Url.Action("Index", "Package")" class="btn btn-secondary mt-2">Back to Packages</a>
+}

@@ -9,46 +9,52 @@ namespace TourismManagement.Controllers
         private readonly BookingService bookingService;
         private readonly PackageService packageService;
 
+        // Hardcoded test user ID
+        private readonly int testUserId = 2;
+
         public BookingController(BookingService bookingService, PackageService packageService)
         {
             this.bookingService = bookingService;
             this.packageService = packageService;
         }
 
-        // List bookings of current user
-        public ActionResult MyBookings()
+        // Show all bookings for the fake user
+        public IActionResult MyBookings()
         {
-            // Replace this line:
-            // int userId = Convert.ToInt32(Session["UserId"]);
-            // With the following:
-            int userId = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
-            var bookings = bookingService.GetUserBookings(userId);
+            var bookings = bookingService.GetUserBookings(testUserId);
             return View(bookings);
         }
 
-        // Create booking
+        // Booking form
         [HttpGet]
-        public ActionResult Create(int packageId)
+        public IActionResult Create(int packageId)
         {
             var package = packageService.GetPackageById(packageId);
             ViewBag.PackageName = package.PackageName;
-            return View();
+            ViewBag.PackagePrice = package.Price;
+            ViewBag.PackageId = package.PackageId;
+
+            return View(new Booking { PackageId = package.PackageId, NumberOfPeople = 1 });
         }
 
+        // Submit booking
         [HttpPost]
-        public ActionResult Create(Booking booking)
+        public IActionResult Create(Booking booking)
         {
-            booking.UserId = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
-            booking.TotalAmount = booking.NumberOfPeople * booking.Package.Price;
+            booking.UserId = testUserId; // use fake user
+            var package = packageService.GetPackageById(booking.PackageId);
+
+            booking.TotalAmount = booking.NumberOfPeople * package.Price;
 
             bookingService.CreateBooking(booking);
+
             return RedirectToAction("MyBookings");
         }
 
         // Cancel booking
-        public ActionResult Cancel(int id)
+        public IActionResult Cancel(int id)
         {
-            bookingService.CancelBooking(id); // you can implement 15% deduction logic in service
+            bookingService.CancelBooking(id);
             return RedirectToAction("MyBookings");
         }
     }

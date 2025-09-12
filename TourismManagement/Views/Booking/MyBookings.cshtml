@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TourismManagement.Models.Booking>
+
+@{
+    ViewBag.Title = "My Bookings";
+}
+
+<h2>My Bookings</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Package</th>
+            <th>People</th>
+            <th>Total Amount</th>
+            <th>Status</th>
+            <th>Booking Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.BookingId</td>
+                <td>@booking.Package?.PackageName</td>
+                <td>@booking.NumberOfPeople</td>
+                <td>@booking.TotalAmount</td>
+                <td>@booking.Status</td>
+                <td>@booking.BookingDate.ToString("yyyy-MM-dd")</td>
+                <td>
+                    @if (booking.Status != "Cancelled")
+                    {
+                        <a href="@Url.Action("Cancel", "Booking", new { id = booking.BookingId })"
+                           class="btn btn-danger btn-sm">Cancel</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a href="@Url.Action("Index", "Package")" class="btn btn-primary">Book Another Package</a>
+</p>

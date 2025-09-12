@@ -1,0 +1,14 @@
+﻿@model TourismManagementV2.Models.Booking
+
+<h2>Booking Details</h2>
+
+<p><strong>Booking ID:</strong> @Model.BookingId</p>
+<p><strong>User ID:</strong> @Model.UserId</p>
+<p><strong>Package ID:</strong> @Model.PackageId</p>
+<p><strong>Status:</strong> @Model.Status</p>
+<p><strong>Booking Date:</strong> @Model.BookingDate.ToString("yyyy-MM-dd")</p>
+
+<p>
+    <a asp-action="UserIndex" class="btn btn-secondary">Back to My Bookings</a>
+    <a asp-action="AdminIndex" class="btn btn-secondary">Back to All Bookings</a>
+</p>

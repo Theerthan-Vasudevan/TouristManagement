@@ -1,8 +1,48 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model TourismManagement.Models.User
+
+@{
+    ViewData["Title"] = "Welcome";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="row align-items-center">
+        <!-- Welcome Section -->
+        <div class="col-lg-6 col-md-12 mb-4">
+            <h1 class="display-4">Welcome to Tourism Management</h1>
+            <p class="lead">
+                Plan your trips, manage your bookings, and explore destinations easily.
+                Start your journey with us today!
+            </p>
+        </div>
+
+        <!-- Login Form Section -->
+        <div class="col-lg-6 col-md-12">
+            <div class="card p-4 shadow-sm">
+                <h2 class="mb-4 text-center">Login</h2>
+
+                @if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger">@ViewBag.Error</div>
+                }
+
+                <form asp-controller="Account" asp-action="Login" method="post">
+                    <div class="form-group mb-3">
+                        <label>Username</label>
+                        <input name="username" class="form-control" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label>Password</label>
+                        <input name="password" type="password" class="form-control" />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </form>
+
+                <p class="mt-3 text-center">
+                    Don't have an account? <a asp-controller="Account" asp-action="Register">Register here</a>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>

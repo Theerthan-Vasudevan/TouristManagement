@@ -1,0 +1,54 @@
+﻿@model IEnumerable<TourismManagementV2.Models.Booking>
+
+@{
+    ViewData["Title"] = "Manage Bookings";
+    var packageName = ViewBag.PackageName as string ?? "Package";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Manage Bookings for @packageName</h2>
+        <a asp-controller="Package" asp-action="AdminIndex" class="btn btn-primary">Back to Packages</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>User</th>
+                        <th>Number of People</th>
+                        <th>Total Amount</th>
+                        <th>Status</th>
+                        <th>Booking Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in Model)
+                    {
+                        <tr>
+                            <td>@booking.User.Username</td>
+                            <td>@booking.NumberOfPeople</td>
+                            <td>₹@booking.TotalAmount</td>
+                            <td>@booking.Status</td>
+                            <td>@booking.BookingDate.ToShortDateString()</td>
+                            <td>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a asp-action="Edit" asp-route-id="@booking.BookingId" class="btn btn-warning btn-sm flex-grow-1">
+                                        Edit
+                                    </a>
+                                    <form asp-action="Delete" method="post" class="flex-grow-1">
+                                        <input type="hidden" name="id" value="@booking.BookingId" />
+                                        <input type="hidden" name="packageId" value="@booking.PackageId" />
+                                        <button type="submit" class="btn btn-danger btn-sm w-100">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

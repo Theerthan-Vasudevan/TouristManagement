@@ -1,0 +1,23 @@
+﻿@model TourismManagementV2.Models.Booking
+
+@{
+    ViewData["Title"] = "Payment Success";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="alert alert-success text-center shadow-sm p-4">
+                <h2 class="fw-bold mb-3">Payment Successful ✅</h2>
+                <p class="mb-2">Your booking for <strong>@Model.Package?.PackageName</strong> has been confirmed.</p>
+                <p class="mb-2"><strong>Number of People:</strong> @Model.NumberOfPeople</p>
+                <p class="mb-2"><strong>Total Paid:</strong> <span class="fw-bold">₹@Model.TotalAmount</span></p>
+                <p class="mb-4"><strong>Payment Method:</strong> @ViewBag.PaymentMethod</p>
+
+                <a asp-controller="Package" asp-action="UserIndex" class="btn btn-dark px-4 py-2">
+                    Go to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

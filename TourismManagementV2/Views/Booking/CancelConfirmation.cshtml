@@ -1,0 +1,21 @@
+﻿@model TourismManagementV2.Models.Booking
+
+@{
+    ViewData["Title"] = "Booking Cancelled";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-lg border-0" style="max-width: 600px; width: 100%;">
+        <div class="card-body text-center p-4">
+            <h2 class="mb-3 text-danger fw-bold">Booking Cancelled ❌</h2>
+
+            <div class="alert alert-info text-start">
+                <p>Your booking for <strong>@Model.Package?.PackageName</strong> has been cancelled.</p>
+                <p>A refund of <strong>₹@ViewBag.RefundAmount</strong> (85% of total) has been initiated.</p>
+                <p>The amount will be reimbursed to your account soon.</p>
+            </div>
+
+            <a asp-action="UserIndex" class="btn btn-dark px-4 mt-3">⬅ Back to My Bookings</a>
+        </div>
+    </div>
+</div>
